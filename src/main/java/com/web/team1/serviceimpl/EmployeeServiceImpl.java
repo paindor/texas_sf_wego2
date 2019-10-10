@@ -15,7 +15,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	@Override
 	public void join(EmployeeBean param) {
-		System.out.println("서비스 조인!!!!"+param.toString());
+		System.out.println("서비스 조인!!!!...."+param.toString());
 		
 		
 	}
