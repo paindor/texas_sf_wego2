@@ -24,13 +24,9 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	@Autowired AdminServiceImpl adminService;
-	
 	@GetMapping("/")
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome  {}.", "HomeController");
-		int count = adminService.findTheNumberOfAdmins();
-		model.addAttribute("count", count );
 		return "index";
 	}
 	
