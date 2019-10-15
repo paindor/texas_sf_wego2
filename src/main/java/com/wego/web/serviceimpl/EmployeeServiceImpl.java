@@ -1,22 +1,20 @@
 package com.wego.web.serviceimpl;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wego.web.domains.DepartmentDTO;
 import com.wego.web.domains.EmployeeDTO;
+import com.wego.web.mappers.DepartmentMapper;
+import com.wego.web.mappers.EmployeeMapper;
 import com.wego.web.services.EmployeeService;
 import com.wego.web.services.DepartmentService;
 
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
-	private static EmployeeServiceImpl instance = new EmployeeServiceImpl();
-	public static EmployeeServiceImpl getInstance() {
-		return instance;
-	}
-	
-	private EmployeeServiceImpl() {}
+	@Autowired EmployeeMapper employeeMapper;
 
 	@Override
 	public void join(EmployeeDTO param) {
