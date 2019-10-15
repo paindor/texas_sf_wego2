@@ -28,7 +28,7 @@ public class AdminController {
 	@GetMapping("/info")
 	public String findAdminById(@RequestParam("eid") String eid,
 			@RequestParam("pwd") String pwd) {
-		
+		// test
 		return "index";
 	}
 
