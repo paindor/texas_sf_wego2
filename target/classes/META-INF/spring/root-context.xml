@@ -20,7 +20,7 @@
 	</bean>
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="mapperLocations" value="classpath:com/wego/web/**/*Mapper.xml"></property>
+		<property name="mapperLocations" value="classpath:com/wego/web/mappers/*Mapper.xml"/>
 	</bean>
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactoryBean"/>

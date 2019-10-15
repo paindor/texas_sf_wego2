@@ -9,7 +9,7 @@
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}.
+<P>  관리자 수 : ${serverTime}.
  </P>
 </body>
 </html>
