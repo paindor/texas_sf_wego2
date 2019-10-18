@@ -19,49 +19,43 @@ auth = (()=>{
         }).fail(()=>{alert(WHEN_ERR)})
     }
     let setContentView =()=>{
-    	 
+    	 login()
     }
     let join =()=>{
-    	$.getScript(auth_vue_js)
-        $('head')
-        .html(auth_vue.join_head())
-            $('body')
-        .html(auth_vue.join_body())
-            $('<button>',{
-                text : 'Continue to checkout',
-                href : '#',
-                click : e=>{
-                	e.preventDefault();
-                	let data = {uid : $('#userid').val(), pwd : $('#password').val()}
-                	alert('전송아이디: '+data.uid)
-                    $.ajax({
-				    	url : _+'/user/join',
-				    	type : 'POST',
-				    	dataType : 'json',
-				    	data : JSON.stringify(data),
-				    	contentType : 'application/json',
-				    	success : d => {
-				    		alert('AJAX 성공 아이디: '+d.uid+', 성공비번: '+d.pwd)
-				    		login()
-				    	},
-				    	error : e => {
-				    		alert('AJAX 실패');
-				    	}
-                	})
-                    
-                }
-            })
-            .addClass('btn btn-primary btn-lg btn-block')
-            .appendTo('#btn_join')
+    	$('head').html(auth_vue.join_head())
+        $('body').html(auth_vue.join_body())
+        $('<button>',{
+            text : 'Continue to checkout',
+            href : '#',
+            click : e=>{
+            	e.preventDefault();
+            	let data = {uid : $('#userid').val(), pwd : $('#password').val()}
+            	alert('전송아이디: '+data.uid)
+                $.ajax({
+			    	url : _+'/user/join',
+			    	type : 'POST',
+			    	dataType : 'json',
+			    	data : JSON.stringify(data),
+			    	contentType : 'application/json',
+			    	success : d => {
+			    		alert('AJAX 성공 아이디: '+d.uid+', 성공비번: '+d.pwd)
+			    		login()
+			    	},
+			    	error : e => {
+			    		alert('AJAX 실패')
+			    	}
+            	})
+                
+            }
+        })
+        .addClass('btn btn-primary btn-lg btn-block')
+        .appendTo('#btn_join')
     }
     let login =()=>{
     	let x = {css: $.css(), img: $.img()}
-		$('head')
-        .html(auth_vue.login_head(x))
-        $('body')
-        .addClass('text-center')
+    	$('head').html(auth_vue.login_head(x))
+        $('body').addClass('text-center')
         .html(auth_vue.login_body(x))
-    
         $('<button>',{
         	type : "submit",
         	text : "Sign in",
