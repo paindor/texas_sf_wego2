@@ -25,6 +25,6 @@ app = (()=>{
 		}
 		);
 	}
-	return {run:run}
+	return {run}
 	
 })();

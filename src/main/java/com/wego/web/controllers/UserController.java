@@ -31,5 +31,6 @@ public class UserController {
 		logger.info("map 에 담긴 아이디 와 비번 {} ",map2.get("uid")+", "+map2.get("pwd"));
 		return map2;
 	}
+	
 
 }
