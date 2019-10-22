@@ -8,7 +8,7 @@ auth = (()=>{
         js = $.js()
         auth_vue_js = js+'/vue/auth_vue.js'
     }
-    let onCreate =()=>{
+    function onCreate(){
         init()
         $.getScript(auth_vue_js).done(()=>{
         	setContentView()
@@ -18,7 +18,7 @@ auth = (()=>{
     		})
         }).fail(()=>{alert(WHEN_ERR)})
     }
-    let setContentView =()=>{
+    function setContentView(){
     	 login()
     }
     let join =()=>{
@@ -52,16 +52,32 @@ auth = (()=>{
         .appendTo('#btn_join')
     }
     let login =()=>{
+    	alert('aaa')
     	let x = {css: $.css(), img: $.img()}
     	$('head').html(auth_vue.login_head(x))
         $('body').addClass('text-center')
         .html(auth_vue.login_body(x))
         $('<button>',{
-        	type : "submit",
         	text : "Sign in",
         	click : e => {
         		e.preventDefault()
-        		
+        		$.ajax({
+        			url: _+'/user/login',
+        			type: 'POST',
+        			data: JSON.stringify({
+      				  uid : $('#uid').val(),
+    				  pwd : $('#pwd').val()
+    				}),
+        			dataType: 'json',
+        			contentType: 'application/json',
+        			success: d =>{
+        				alert(d.uname+' 님 환영합니다')
+        			},
+        			error: e =>{
+        				alert('AJAX ERROR ')
+        			}
+        			
+        		})
         	}
         })
         .addClass("btn btn-lg btn-primary btn-block")
